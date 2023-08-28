@@ -20,8 +20,8 @@ struct PhotoStreamView: View {
         VStack(spacing: 0) {
             if let photoStreamResult = model.photoStream {
                 switch photoStreamResult {
-                case .failure(_):
-                    Text("Failed to find the user")
+                case .failure(let error):
+                    Text("Failed to find the user with error:\n\(error.localizedDescription)")
                 case .success(let photoStream):
                     let photos = photoStream.photos.photo
                     IconAndTitle(
@@ -96,9 +96,9 @@ struct PhotoStreamView_Previews: PreviewProvider {
     static var previews: some View {
         PhotoStreamView(
             model: UserPublicPhotoStreamModel(
-                nsid: "124055761@N02"
+//                nsid: "124055761@N02"
 //                nsid: "48790596@N05"
-//                nsid: "abcd"
+                nsid: "abcd"
             )
         )
     }
