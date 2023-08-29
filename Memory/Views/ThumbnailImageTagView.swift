@@ -23,8 +23,8 @@ struct ThumbnailImageTagView<Content: View>: View {
             AsyncImageHack(url: photo.thumbnailURL) { phase in
                 if let image = phase.image {
                     image // Displays the loaded image.
-                } else if phase.error != nil {
-                    Text("Failed to load")
+                } else if let err = phase.error {
+                    Text("Error:\n\(err.localizedDescription)")
                 } else {
                     Color.gray
                 }
