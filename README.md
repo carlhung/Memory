@@ -8,7 +8,7 @@ When the app launches, It shows a list of `Recent Photos` were posted by differe
 User can search photos and user from the search bar.
 
 Typing the tags with comma and tapping `Tags`, it preforms tag search.  
-![Screenshot 2023-08-29 at 11.44.10 am.png](:/5c8ab3aa6fe7431abb8180748a70a46b)
+![Screenshot 2023-08-29 at 11.44.10 am.png](/5c8ab3aa6fe7431abb8180748a70a46b.png)
 
 Typing nsid or username and tapping `User`, it preforms user search.
 
