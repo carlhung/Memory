@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		57670DDE2A9CF801001C4CFC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57670DDD2A9CF801001C4CFC /* SearchBar.swift */; };
 		57802BB82A9D67E700FA8E04 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802BB72A9D67E700FA8E04 /* Helpers.swift */; };
+		57802BBA2A9DF90600FA8E04 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802BB92A9DF90600FA8E04 /* QRcodeView.swift */; };
 		57F10CE92A98E33800C4F03D /* MemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10CE82A98E33800C4F03D /* MemoryApp.swift */; };
 		57F10CED2A98E33A00C4F03D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F10CEC2A98E33A00C4F03D /* Assets.xcassets */; };
 		57F10CF02A98E33A00C4F03D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F10CEF2A98E33A00C4F03D /* Preview Assets.xcassets */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		57670DDD2A9CF801001C4CFC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		57802BB72A9D67E700FA8E04 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		57802BB92A9DF90600FA8E04 /* QRcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeView.swift; sourceTree = "<group>"; };
 		57F10CE52A98E33800C4F03D /* Memory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F10CE82A98E33800C4F03D /* MemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryApp.swift; sourceTree = "<group>"; };
 		57F10CEC2A98E33A00C4F03D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				57F10D372A9ACAE600C4F03D /* IconAndTitle.swift */,
 				57F10D3D2A9BC84300C4F03D /* PhotoDetailView.swift */,
 				57670DDD2A9CF801001C4CFC /* SearchBar.swift */,
+				57802BB92A9DF90600FA8E04 /* QRcodeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				57802BB82A9D67E700FA8E04 /* Helpers.swift in Sources */,
 				57F10CF52A98E33A00C4F03D /* Memory.xcdatamodeld in Sources */,
 				57F10D302A9ABFBE00C4F03D /* HomeView.swift in Sources */,
+				57802BBA2A9DF90600FA8E04 /* QRcodeView.swift in Sources */,
 				57F10CF22A98E33A00C4F03D /* Persistence.swift in Sources */,
 				57F10D192A98E37100C4F03D /* PhotoStream.swift in Sources */,
 				57F10D2C2A99500200C4F03D /* PhotoStreamView.swift in Sources */,

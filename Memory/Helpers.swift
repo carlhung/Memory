@@ -10,22 +10,21 @@ import UIKit
 import SwiftUI
 
 func generateQRCode(from string: String) -> Image? {
-    let data = string.data(using: String.Encoding.ascii)
-
-    if let filter = CIFilter(name: "CIQRCodeGenerator") {
-        filter.setValue(data, forKey: "inputMessage")
-        let transform = CGAffineTransform(scaleX: 3, y: 3)
-        
-        if let output = filter.outputImage?.transformed(by: transform) {
-            let uiImg = UIImage(ciImage: output)
-            return Image(uiImage: uiImg)
-        }
+    guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+    let data = string.data(using: .ascii, allowLossyConversion: false)
+    filter.setValue(data, forKey: "inputMessage")
+    guard let ciimage = filter.outputImage else { return nil }
+    let transform = CGAffineTransform(scaleX: 10, y: 10)
+    let scaledCIImage = ciimage.transformed(by: transform)
+    let uiimage = UIImage(ciImage: scaledCIImage)
+    guard let pngData = uiimage.pngData(),
+            let uiImg = UIImage(data: pngData) else {
+        return nil
     }
-
-    return nil
+    return Image(uiImage: uiImg)
 }
 
 func generateProfileURL(nsid: String) -> URL? {
     let baseURL = "https://www.flickr.com/photos/"
-    return URL(string: baseURL + nsid)
+    return URL(string: baseURL + nsid + "/")
 }
