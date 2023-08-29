@@ -43,23 +43,31 @@ extension PhotoStream {
 
 extension PhotoStream.Photo {
     
-    static var defaultIconURL: URL? {
-        URL(string: "https://www.flickr.com/images/buddyicon.gif")
+    private enum FetchImageSize: String {
+        case thumbnail = "_q", large = "_b"
     }
-
-    var imageURLs: (thumbnail: URL, original: URL)? {
+    
+    private func imageURL(size: FetchImageSize) -> URL? {
         let id = self.id
         let secret = self.secret
         let server = self.server
         // https://www.flickr.com/services/api/misc.urls.html
         let urlHeadStr = "https://live.staticflickr.com/\(server)/\(id)_\(secret)"
         let jpgPrefix = ".jpg"
-        let urlThumbnailStr = urlHeadStr + "_q" + jpgPrefix
-        let urlOriginalImageStr = urlHeadStr + "_b" + jpgPrefix
-        guard let thumbnailUrl = URL(string: urlThumbnailStr), let originalUrl = URL(string: urlOriginalImageStr) else {
-            return nil
-        }
-        return (thumbnailUrl, originalUrl)
+        let urlStr = urlHeadStr + size.rawValue + jpgPrefix
+        return URL(string: urlStr)
+    }
+    
+    var thumbnailURL: URL? {
+        imageURL(size: .thumbnail)
+    }
+    
+    var imageURL: URL? {
+        imageURL(size: .large)
+    }
+    
+    static var defaultIconURL: URL? {
+        URL(string: "https://www.flickr.com/images/buddyicon.gif")
     }
     
     var profileIconURL: URL? {
@@ -77,7 +85,7 @@ extension PhotoStream.Photo {
     }
     
     var imageURL_QRcode: Image? {
-        guard let imageURLstr = self.imageURLs?.original.absoluteString else {
+        guard let imageURLstr = self.imageURL?.absoluteString else {
             return nil
         }
         return generateQRCode(from: imageURLstr)

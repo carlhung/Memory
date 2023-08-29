@@ -20,7 +20,7 @@ struct ThumbnailImageTagView<Content: View>: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            AsyncImageHack(url: photo.imageURLs?.thumbnail) { phase in
+            AsyncImageHack(url: photo.thumbnailURL) { phase in
                 if let image = phase.image {
                     image // Displays the loaded image.
                 } else if phase.error != nil {

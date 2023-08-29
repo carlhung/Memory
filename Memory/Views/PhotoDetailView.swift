@@ -28,7 +28,7 @@ struct PhotoDetailView: View {
         ZStack {
             ScrollView {
                 VStack(spacing: 10) {
-                    AsyncImageHack(url: photo.imageURLs?.original) { phase in
+                    AsyncImageHack(url: photo.imageURL) { phase in
                         if let image = phase.image {
                             image
                                 .resizable()
