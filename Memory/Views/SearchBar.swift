@@ -23,7 +23,7 @@ struct SearchBar<M: SearchBarModel>: View {
     @State
     var showAlert = false
     
-    var model: M
+    let model: M
     
     let cleanButtonAction: () -> Void
     
