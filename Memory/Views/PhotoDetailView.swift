@@ -89,6 +89,18 @@ struct PhotoDetailView: View {
             }
         }
         .defaultNavigationBarConfig(barText: "Photo Detail")
+        .toolbar {
+            ToolbarItem {
+                Menu("URL's QR Code") {
+                    Button("User profile") {
+                        
+                    }
+                    Button("Image") {
+                        
+                    }
+                }
+            }
+        }
     }
 }
 

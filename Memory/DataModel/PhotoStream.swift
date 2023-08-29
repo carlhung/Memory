@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct PhotoStream: Codable {
     let photos: Photos
@@ -73,5 +74,12 @@ extension PhotoStream.Photo {
         } else {
             return Self.defaultIconURL
         }
+    }
+    
+    var imageURL_QRcode: Image? {
+        guard let imageURLstr = self.imageURLs?.original.absoluteString else {
+            return nil
+        }
+        return generateQRCode(from: imageURLstr)
     }
 }

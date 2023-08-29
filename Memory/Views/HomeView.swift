@@ -96,8 +96,8 @@ struct HomeView: View {
     }
 }
 
-//struct PHomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(model: HomeViewModel())
-//    }
-//}
+struct PHomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView(model: HomeViewModel())
+    }
+}
