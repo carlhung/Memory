@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-struct SearchBar: View {
+protocol SearchBarModel: Model {
+    func searchUser(name: String) async throws -> String?
+    func searchTaggedPhotos(tags: String) async throws
+}
+
+struct SearchBar<M: SearchBarModel>: View {
     
     @Binding
     var text: String
@@ -18,9 +23,9 @@ struct SearchBar: View {
     @State
     var showAlert = false
     
-    var model: HomeViewModel
+    var model: M
     
-    var cleanButtonAction: () -> Void = {}
+    let cleanButtonAction: () -> Void
     
     var body: some View {
         HStack {

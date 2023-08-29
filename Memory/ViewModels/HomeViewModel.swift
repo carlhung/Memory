@@ -17,6 +17,10 @@ final class HomeViewModel: ObservableObject, Model {
         self.photoStream = try await api.getRecent()
     }
     
+
+}
+
+extension HomeViewModel: SearchBarModel {
     func searchUser(name: String) async throws -> String? {
         let searchUserResult = try await api.findBy(username: name)
         return searchUserResult.user?.nsid
