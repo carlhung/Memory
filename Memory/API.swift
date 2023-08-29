@@ -7,38 +7,14 @@
 
 import Foundation
 
-struct ErrorLogInformation {
-    var message: String?
-    let function: StaticString
-    let file: StaticString
-    let fileID: StaticString
-    let filePath: StaticString
-    let line: Int
-    init(
-        message: String? = nil,
-        function: StaticString = #function,
-        file: StaticString = #file,
-        fileID: StaticString = #fileID,
-        filePath: StaticString = #filePath,
-        line: Int = #line
-    ) {
-        self.message = message
-        self.function = function
-        self.file = file
-        self.fileID = fileID
-        self.filePath = filePath
-        self.line = line
-    }
-}
-
 final class API {
 
     static let shared = API()
 
     enum APIError: Error {
-        case urlConstructError(ErrorLogInformation? = nil)
-        case nonHttpResponse(ErrorLogInformation? = nil)
-        case non200StatusCode(ErrorLogInformation? = nil)
+        case urlConstructError(ErrorLogInformation)
+        case nonHttpResponse(ErrorLogInformation)
+        case non200StatusCode(ErrorLogInformation)
     }
 
     private static let api_key = "727859688011532b3ec61d710d88aa15"
@@ -57,7 +33,6 @@ final class API {
         // The date taken should always be displayed in the timezone of the photo owner, which is to say, don't perform any conversion on it.
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         formatter.calendar = Calendar(identifier: .iso8601)
-        //    formatter.timeZone = TimeZone(secondsFromGMT: 0)
         formatter.locale = Locale(identifier: "en_US_POSIX")
         return formatter
     }()
@@ -131,7 +106,6 @@ final class API {
         queriesDict: [String: String],
         errorLogInformation: ErrorLogInformation = ErrorLogInformation()
     ) async throws -> T {
-        
         try await request(
             method: method,
             queriesDict: queriesDict,

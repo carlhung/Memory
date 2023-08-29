@@ -12,7 +12,9 @@ import SwiftUI
 struct AsyncImageHack<Content: View>: View {
 
     let url: URL?
-    @ViewBuilder let content: (AsyncImagePhase) -> Content
+    
+    @ViewBuilder
+    let content: (AsyncImagePhase) -> Content
 
     @State private var currentUrl: URL?
     

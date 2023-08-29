@@ -12,17 +12,18 @@ struct SearchedUser: Codable {
     let message: String?
 }
 
-// MARK: - User
-struct User: Codable {
-    let id, nsid: String
-    let username: Username
-}
+extension SearchedUser {
+    struct User: Codable {
+        let id, nsid: String
+        let username: Username
+    }
+    
+    struct Username: Codable {
+        let content: String
 
-// MARK: - Username
-struct Username: Codable {
-    let content: String
-
-    enum CodingKeys: String, CodingKey {
-        case content = "_content"
+        enum CodingKeys: String, CodingKey {
+            case content = "_content"
+        }
     }
 }
+

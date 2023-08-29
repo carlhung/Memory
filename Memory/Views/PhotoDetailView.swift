@@ -33,8 +33,8 @@ struct PhotoDetailView: View {
                             image
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
-                        } else if phase.error != nil {
-                            Text("Failed to load")
+                        } else if let err = phase.error {
+                            Text("Error:\n\(err.localizedDescription)")
                         } else {
                             Color.gray
                         }
@@ -95,13 +95,16 @@ struct PhotoDetailView: View {
                 }
             }
             
-            if showImageUrlQR, let img = photo.imageURL_QRcode {
-                QRcodeView(shown: $showImageUrlQR, qrCodeImage: img)
+            if showImageUrlQR {
+                QRcodeView(shown: $showImageUrlQR, qrCodeImage: photo.imageURL_QRcode)
             }
             
-            if showProfileUrlQR, let url = generateProfileURL(nsid: photo.owner),
-                let img = generateQRCode(from: url.absoluteString) {
-                QRcodeView(shown: $showProfileUrlQR, qrCodeImage: img)
+            if showProfileUrlQR {
+                if let url = generateProfileURL(nsid: photo.owner) {
+                    QRcodeView(shown: $showProfileUrlQR, qrCodeImage: generateQRCode(from: url.absoluteString))
+                } else {
+                    QRcodeView(shown: $showProfileUrlQR, qrCodeImage: nil)
+                }
             }
         }
         .defaultNavigationBarConfig(barText: "Photo Detail")
@@ -120,7 +123,7 @@ struct PhotoDetailView: View {
     }
 }
 
-fileprivate struct LeadingText: View {
+private struct LeadingText: View {
     let context: String
     let font: Font?
     

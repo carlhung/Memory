@@ -9,16 +9,17 @@ import SwiftUI
 
 struct QRcodeView: View {
     
-    @Binding var shown: Bool
+    @Binding
+    var shown: Bool
 
-    var qrCodeImage: Image
+    let qrCodeImage: Image?
     
-    let width = UIScreen.main.bounds.width/2-30
+    let width = UIScreen.main.bounds.width / 2 - 30
     
     var body: some View {
         VStack {
             Spacer()
-            qrCodeImage
+            qrCodeImage?
                 .resizable()
                 .frame(width: width, height: width)
             Spacer()
@@ -33,11 +34,10 @@ struct QRcodeView: View {
             }
             Divider()
         }
-        .frame(width: UIScreen.main.bounds.width-50, height: 250)
+        .frame(width: UIScreen.main.bounds.width - 50, height: 250)
         
         .background(Color.black.opacity(0.5))
         .cornerRadius(12)
         .clipped()
-        
     }
 }

@@ -96,9 +96,9 @@ struct PhotoStreamView_Previews: PreviewProvider {
     static var previews: some View {
         PhotoStreamView(
             model: UserPublicPhotoStreamModel(
-//                nsid: "124055761@N02"
+                nsid: "124055761@N02"
 //                nsid: "48790596@N05"
-                nsid: "abcd"
+//                nsid: "abcd"
             )
         )
     }

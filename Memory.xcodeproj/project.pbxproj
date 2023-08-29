@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		573E43832A9E5AF5007F8080 /* ErrorLogInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573E43822A9E5AF5007F8080 /* ErrorLogInformation.swift */; };
 		57670DDE2A9CF801001C4CFC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57670DDD2A9CF801001C4CFC /* SearchBar.swift */; };
 		57802BB82A9D67E700FA8E04 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802BB72A9D67E700FA8E04 /* Helpers.swift */; };
 		57802BBA2A9DF90600FA8E04 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802BB92A9DF90600FA8E04 /* QRcodeView.swift */; };
 		57F10CE92A98E33800C4F03D /* MemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10CE82A98E33800C4F03D /* MemoryApp.swift */; };
 		57F10CED2A98E33A00C4F03D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F10CEC2A98E33A00C4F03D /* Assets.xcassets */; };
 		57F10CF02A98E33A00C4F03D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F10CEF2A98E33A00C4F03D /* Preview Assets.xcassets */; };
-		57F10CF22A98E33A00C4F03D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10CF12A98E33A00C4F03D /* Persistence.swift */; };
 		57F10CF52A98E33A00C4F03D /* Memory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57F10CF32A98E33A00C4F03D /* Memory.xcdatamodeld */; };
 		57F10CFF2A98E33B00C4F03D /* MemoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10CFE2A98E33B00C4F03D /* MemoryTests.swift */; };
 		57F10D092A98E33B00C4F03D /* MemoryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D082A98E33B00C4F03D /* MemoryUITests.swift */; };
@@ -52,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		573E43822A9E5AF5007F8080 /* ErrorLogInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogInformation.swift; sourceTree = "<group>"; };
 		57670DDD2A9CF801001C4CFC /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		57802BB72A9D67E700FA8E04 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		57802BB92A9DF90600FA8E04 /* QRcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRcodeView.swift; sourceTree = "<group>"; };
@@ -59,7 +60,6 @@
 		57F10CE82A98E33800C4F03D /* MemoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryApp.swift; sourceTree = "<group>"; };
 		57F10CEC2A98E33A00C4F03D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F10CEF2A98E33A00C4F03D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		57F10CF12A98E33A00C4F03D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		57F10CF42A98E33A00C4F03D /* Memory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Memory.xcdatamodel; sourceTree = "<group>"; };
 		57F10CFA2A98E33B00C4F03D /* MemoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F10CFE2A98E33B00C4F03D /* MemoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTests.swift; sourceTree = "<group>"; };
@@ -137,10 +137,10 @@
 				57F10D172A98E35100C4F03D /* DataModel */,
 				57F10CE82A98E33800C4F03D /* MemoryApp.swift */,
 				57F10CEC2A98E33A00C4F03D /* Assets.xcassets */,
-				57F10CF12A98E33A00C4F03D /* Persistence.swift */,
 				57F10CF32A98E33A00C4F03D /* Memory.xcdatamodeld */,
 				57F10CEE2A98E33A00C4F03D /* Preview Content */,
 				57802BB72A9D67E700FA8E04 /* Helpers.swift */,
+				573E43822A9E5AF5007F8080 /* ErrorLogInformation.swift */,
 			);
 			path = Memory;
 			sourceTree = "<group>";
@@ -348,7 +348,6 @@
 				57F10CF52A98E33A00C4F03D /* Memory.xcdatamodeld in Sources */,
 				57F10D302A9ABFBE00C4F03D /* HomeView.swift in Sources */,
 				57802BBA2A9DF90600FA8E04 /* QRcodeView.swift in Sources */,
-				57F10CF22A98E33A00C4F03D /* Persistence.swift in Sources */,
 				57F10D192A98E37100C4F03D /* PhotoStream.swift in Sources */,
 				57F10D2C2A99500200C4F03D /* PhotoStreamView.swift in Sources */,
 				57F10D342A9AC1E500C4F03D /* ThumbnailImageTagView.swift in Sources */,
@@ -360,6 +359,7 @@
 				57670DDE2A9CF801001C4CFC /* SearchBar.swift in Sources */,
 				57F10D382A9ACAE600C4F03D /* IconAndTitle.swift in Sources */,
 				57F10D322A9AC02300C4F03D /* HomeViewModel.swift in Sources */,
+				573E43832A9E5AF5007F8080 /* ErrorLogInformation.swift in Sources */,
 				57F10CE92A98E33800C4F03D /* MemoryApp.swift in Sources */,
 				57F10D1B2A98E3C300C4F03D /* SearchedUser.swift in Sources */,
 				57F10D1D2A98E40600C4F03D /* API.swift in Sources */,
