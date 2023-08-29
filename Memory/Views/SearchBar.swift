@@ -38,10 +38,8 @@ struct SearchBar: View {
                     let nsid: String?
                     if searchUsername.contains("@") {
                         nsid = searchUsername.uppercased()
-                    } else if let NSIDresult = try await model.searchUser(name: searchUsername) {
-                        nsid = NSIDresult
                     } else {
-                        nsid = nil
+                        nsid = try await model.searchUser(name: searchUsername)
                     }
                     
                     guard let nsid else {
