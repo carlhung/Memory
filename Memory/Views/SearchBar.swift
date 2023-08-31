@@ -99,11 +99,6 @@ private struct ClearButton: ViewModifier {
     
     let action: () -> Void
 
-    init(text: Binding<String>, action: @escaping () -> Void) {
-        self._text = text
-        self.action = action
-    }
-
     func body(content: Content) -> some View {
         HStack {
             content
