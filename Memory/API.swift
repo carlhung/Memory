@@ -95,9 +95,9 @@ final class API {
         let (data, urlResponse) = try await URLSession.shared.data(from: url)
         try checkIfStatusCodeCorrect(urlResponse: urlResponse, errorLogInformation: errorLogInformation)
         if let dateDecodingStrategy {
-            return try data.decodeJSON(T.self, dateDecodingStrategy: dateDecodingStrategy)
+            return try data.decodeJSON(dateDecodingStrategy: dateDecodingStrategy)
         } else {
-            return try data.decodeJSON(T.self)
+            return try data.decodeJSON()
         }
     }
     
