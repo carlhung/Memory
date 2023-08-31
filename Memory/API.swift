@@ -19,7 +19,7 @@ final class API {
 
     private static let api_key = "727859688011532b3ec61d710d88aa15"
 
-    static var endpoint: URLComponents = {
+    static let endpoint: URLComponents = {
         var component = URLComponents()
         component.scheme = "https"
         component.host = "api.flickr.com"

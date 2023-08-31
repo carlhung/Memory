@@ -16,8 +16,6 @@ final class HomeViewModel: ObservableObject, Model {
     func getRecent() async throws {
         self.photoStream = try await api.getRecent()
     }
-    
-
 }
 
 extension HomeViewModel: SearchBarModel {

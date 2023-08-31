@@ -44,7 +44,8 @@ extension PhotoStream {
 extension PhotoStream.Photo {
     
     private enum FetchImageSize: String {
-        case thumbnail = "_q", large = "_b"
+        case thumbnail = "_q",
+             large = "_b"
     }
     
     private func imageURL(size: FetchImageSize) -> URL? {
