@@ -14,14 +14,14 @@ protocol SearchBarModel: Model {
 
 struct SearchBar<M: SearchBarModel>: View {
     
+    @State
+    var showAlert = false
+    
     @Binding
     var text: String
     
     @Binding
     var path: NavigationPath
-    
-    @State
-    var showAlert = false
     
     let model: M
     
