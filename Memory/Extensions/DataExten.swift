@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension Data {
+extension Data {
     func decodeJSON<T: Decodable>(_ type: T.Type = T.self,
                                 decodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
                                 dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate,
