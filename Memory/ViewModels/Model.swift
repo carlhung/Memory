@@ -6,11 +6,12 @@
 //
 
 protocol Model {
-    var api: API { get }
+    associatedtype APISocket: API
+    var api: APISocket { get }
 }
 
 extension Model {
-    var api: API {
-        API.shared
+    var api: Connector {
+        Connector.shared
     }
 }

@@ -1,5 +1,5 @@
 //
-//  API.swift
+//  Connector.swift
 //  Memory
 //
 //  Created by Carl Hung on 25/08/2023.
@@ -7,36 +7,43 @@
 
 import Foundation
 
-final class API {
+protocol API {
+    static var shared: Self { get }
+    func getPublicPhotos(nsid: String) async throws -> PhotoStream
+    func getRecent() async throws -> PhotoStream
+    func search(tags: String) async throws -> PhotoStream
+    func findBy(username: String) async throws -> SearchedUser
+}
 
-    static let shared = API()
+enum APIError: Error {
+    case urlConstructError(ErrorLogInformation)
+    case nonHttpResponse(ErrorLogInformation)
+    case non200StatusCode(ErrorLogInformation)
+}
 
-    enum APIError: Error {
-        case urlConstructError(ErrorLogInformation)
-        case nonHttpResponse(ErrorLogInformation)
-        case non200StatusCode(ErrorLogInformation)
-    }
+private let endpoint: URLComponents = {
+    var component = URLComponents()
+    component.scheme = "https"
+    component.host = "api.flickr.com"
+    component.path = "/services/rest/"
+    return component
+}()
 
-    private static let api_key = "727859688011532b3ec61d710d88aa15"
+private let api_key = "727859688011532b3ec61d710d88aa15"
 
-    static let endpoint: URLComponents = {
-        var component = URLComponents()
-        component.scheme = "https"
-        component.host = "api.flickr.com"
-        component.path = "/services/rest/"
-        return component
-    }()
-    
-    private static let takenDateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        // https://www.flickr.com/services/api/misc.dates.html
-        // The date taken should always be displayed in the timezone of the photo owner, which is to say, don't perform any conversion on it.
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        return formatter
-    }()
+private let takenDateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    // https://www.flickr.com/services/api/misc.dates.html
+    // The date taken should always be displayed in the timezone of the photo owner, which is to say, don't perform any conversion on it.
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    formatter.calendar = Calendar(identifier: .iso8601)
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    return formatter
+}()
 
+private let defaultExtraAndPerPage = ["extras": "tags, description, date_taken, owner_name, icon_server", "per_page": "500"]
+
+extension API {
     private static func createGetRequest(queries: [String: String], errorLogInformation: ErrorLogInformation) throws -> URL {
         var endpointComponent = endpoint
         endpointComponent.queryItems = queries.map { URLQueryItem(name: $0.0, value: $0.1) }
@@ -47,30 +54,28 @@ final class API {
     }
     
     private static func addCommonQueries(queriesDict: inout [String: String]) {
-        queriesDict["api_key"] = Self.api_key
+        queriesDict["api_key"] = api_key
         queriesDict["format"] = "json"
         queriesDict["nojsoncallback"] = "1"
     }
     
-    private static let defaultExtraAndPerPage = ["extras": "tags, description, date_taken, owner_name, icon_server", "per_page": "500"]
-    
     /// Get a list of public PhotoStream for the given `nsid`.
     func getPublicPhotos(nsid: String) async throws -> PhotoStream {
         // https://www.flickr.com/services/api/flickr.people.getPublicPhotos.html
-        var queriesDict = Self.defaultExtraAndPerPage
+        var queriesDict = defaultExtraAndPerPage
         queriesDict["user_id"] = nsid
         return try await Self.requestWithTakenDateDecodingStrategy(method: "flickr.people.getPublicPhotos", queriesDict: queriesDict)
     }
     
     func getRecent() async throws -> PhotoStream {
         // https://www.flickr.com/services/api/flickr.photos.getRecent.htm
-        let queriesDict = Self.defaultExtraAndPerPage
+        let queriesDict = defaultExtraAndPerPage
         return try await Self.requestWithTakenDateDecodingStrategy(method: "flickr.photos.getRecent", queriesDict: queriesDict)
     }
     
     func search(tags: String) async throws -> PhotoStream {
         // https://www.flickr.com/services/api/flickr.photos.search.html
-        var queriesDict = Self.defaultExtraAndPerPage
+        var queriesDict = defaultExtraAndPerPage
         queriesDict["tags"] = tags
         queriesDict["tag_mode"] = "all"
         return try await Self.requestWithTakenDateDecodingStrategy(method: "flickr.photos.search", queriesDict: queriesDict)
@@ -109,7 +114,7 @@ final class API {
         try await request(
             method: method,
             queriesDict: queriesDict,
-            dateDecodingStrategy: .formatted(Self.takenDateFormatter),
+            dateDecodingStrategy: .formatted(takenDateFormatter),
             errorLogInformation: errorLogInformation
         )
     }
@@ -124,4 +129,8 @@ final class API {
             throw APIError.non200StatusCode(errorLogInformation)
         }
     }
+}
+
+final class Connector: API {
+    static let shared = Connector()
 }

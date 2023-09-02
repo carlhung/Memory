@@ -20,7 +20,7 @@
 		57F10D0B2A98E33B00C4F03D /* MemoryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D0A2A98E33B00C4F03D /* MemoryUITestsLaunchTests.swift */; };
 		57F10D192A98E37100C4F03D /* PhotoStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D182A98E37100C4F03D /* PhotoStream.swift */; };
 		57F10D1B2A98E3C300C4F03D /* SearchedUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D1A2A98E3C300C4F03D /* SearchedUser.swift */; };
-		57F10D1D2A98E40600C4F03D /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D1C2A98E40600C4F03D /* API.swift */; };
+		57F10D1D2A98E40600C4F03D /* Connector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D1C2A98E40600C4F03D /* Connector.swift */; };
 		57F10D1F2A98E46300C4F03D /* DataExten.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D1E2A98E46300C4F03D /* DataExten.swift */; };
 		57F10D2A2A98FEC200C4F03D /* UserPublicPhotoStreamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D292A98FEC200C4F03D /* UserPublicPhotoStreamModel.swift */; };
 		57F10D2C2A99500200C4F03D /* PhotoStreamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10D2B2A99500200C4F03D /* PhotoStreamView.swift */; };
@@ -68,7 +68,7 @@
 		57F10D0A2A98E33B00C4F03D /* MemoryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		57F10D182A98E37100C4F03D /* PhotoStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStream.swift; sourceTree = "<group>"; };
 		57F10D1A2A98E3C300C4F03D /* SearchedUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedUser.swift; sourceTree = "<group>"; };
-		57F10D1C2A98E40600C4F03D /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		57F10D1C2A98E40600C4F03D /* Connector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connector.swift; sourceTree = "<group>"; };
 		57F10D1E2A98E46300C4F03D /* DataExten.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExten.swift; sourceTree = "<group>"; };
 		57F10D292A98FEC200C4F03D /* UserPublicPhotoStreamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPublicPhotoStreamModel.swift; sourceTree = "<group>"; };
 		57F10D2B2A99500200C4F03D /* PhotoStreamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStreamView.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				57F10D242A98F2D900C4F03D /* ViewModels */,
-				57F10D1C2A98E40600C4F03D /* API.swift */,
+				57F10D1C2A98E40600C4F03D /* Connector.swift */,
 				57F10D212A98E50400C4F03D /* Views */,
 				57F10D202A98E4AE00C4F03D /* Extensions */,
 				57F10D172A98E35100C4F03D /* DataModel */,
@@ -362,7 +362,7 @@
 				573E43832A9E5AF5007F8080 /* ErrorLogInformation.swift in Sources */,
 				57F10CE92A98E33800C4F03D /* MemoryApp.swift in Sources */,
 				57F10D1B2A98E3C300C4F03D /* SearchedUser.swift in Sources */,
-				57F10D1D2A98E40600C4F03D /* API.swift in Sources */,
+				57F10D1D2A98E40600C4F03D /* Connector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
