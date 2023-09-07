@@ -31,8 +31,8 @@ private struct DefaultNavigationBarConfig: ViewModifier {
 
 private struct DefaultRoundedRectangle: ViewModifier {
     
-    var color: Color
-    var lineWidth: CGFloat
+    let color: Color
+    let lineWidth: CGFloat
     let cornerRadius: CGFloat
     
     func body(content: Content) -> some View {
