@@ -7,32 +7,26 @@
 
 import SwiftUI
 
-struct QRcodeView: View {
-    
-    @Binding
-    var shown: Bool
+protocol QRCodeViewProtocol {
+    var shown: Binding<Bool> { get set }
+    var qrCodeImage: Image? { get }
+    var width: Double { get }
+}
 
-    let qrCodeImage: Image?
-    
-    let width = UIScreen.main.bounds.width / 2 - 30
-    
+extension QRCodeViewProtocol {
+    var width: Double { UIScreen.main.bounds.width / Double(2 - 30) }
+}
+
+struct QRcodeView: QRCodeViewProtocol {
+    var shown: Binding<Bool>
+    var qrCodeImage: Image?
+}
+
+extension QRCodeViewProtocol where Self: View {
+    @ViewBuilder
     var body: some View {
-        VStack {
-            Spacer()
-            qrCodeImage?
-                .resizable()
-                .frame(width: width, height: width)
-            Spacer()
-            Divider()
-            HStack {
-                Button("OK") {
-                    shown.toggle()
-                }
-                .font(.system(size: 20, weight: .heavy, design: .default))
-                .frame(width: width, height: 40)
-                .foregroundColor(.white)
-            }
-            Divider()
+        vstack {
+            content
         }
         .frame(width: UIScreen.main.bounds.width - 50, height: 250)
         
@@ -40,4 +34,66 @@ struct QRcodeView: View {
         .cornerRadius(12)
         .clipped()
     }
+    
+    @ViewBuilder
+    private var content: some View {
+        Spacer()
+        qrCodeImage?
+            .resizable()
+            .frame(width: width, height: width)
+        Spacer()
+        Divider()
+        HStack {
+            Button("OK") {
+                shown.wrappedValue.toggle()
+            }
+            .font(.system(size: 20, weight: .heavy, design: .default))
+            .frame(width: width, height: 40)
+            .foregroundColor(.white)
+        }
+        Divider()
+    }
+    
+    private func vstack(@ViewBuilder block: () -> some View) -> some View {
+        VStack{
+            block()
+        }
+    }
 }
+
+extension QRcodeView: View {}
+
+//struct QRcodeView: View {
+//    
+//    @Binding
+//    var shown: Bool
+//
+//    let qrCodeImage: Image?
+//    
+//    let width = UIScreen.main.bounds.width / 2 - 30
+//    
+//    var body: some View {
+//        VStack {
+//            Spacer()
+//            qrCodeImage?
+//                .resizable()
+//                .frame(width: width, height: width)
+//            Spacer()
+//            Divider()
+//            HStack {
+//                Button("OK") {
+//                    shown.toggle()
+//                }
+//                .font(.system(size: 20, weight: .heavy, design: .default))
+//                .frame(width: width, height: 40)
+//                .foregroundColor(.white)
+//            }
+//            Divider()
+//        }
+//        .frame(width: UIScreen.main.bounds.width - 50, height: 250)
+//        
+//        .background(Color.black.opacity(0.5))
+//        .cornerRadius(12)
+//        .clipped()
+//    }
+//}
