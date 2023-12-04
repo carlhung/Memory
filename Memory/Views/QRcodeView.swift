@@ -54,7 +54,7 @@ extension QRCodeViewProtocol where Self: View {
         Divider()
     }
     
-    private func vstack(@ViewBuilder block: () -> some View) -> some View {
+    private func vstack(@ViewBuilder block: () -> some View) -> VStack<some View> {
         VStack{
             block()
         }
