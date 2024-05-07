@@ -11,7 +11,6 @@
 		57670DDE2A9CF801001C4CFC /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57670DDD2A9CF801001C4CFC /* SearchBar.swift */; };
 		57802BB82A9D67E700FA8E04 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802BB72A9D67E700FA8E04 /* Helpers.swift */; };
 		57802BBA2A9DF90600FA8E04 /* QRcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57802BB92A9DF90600FA8E04 /* QRcodeView.swift */; };
-		57EDA6922BEA1840005AFB87 /* AtomicWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 57EDA6912BEA1840005AFB87 /* AtomicWrapper */; };
 		57F10CE92A98E33800C4F03D /* MemoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F10CE82A98E33800C4F03D /* MemoryApp.swift */; };
 		57F10CED2A98E33A00C4F03D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F10CEC2A98E33A00C4F03D /* Assets.xcassets */; };
 		57F10CF02A98E33A00C4F03D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57F10CEF2A98E33A00C4F03D /* Preview Assets.xcassets */; };
@@ -88,7 +87,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57EDA6922BEA1840005AFB87 /* AtomicWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +230,6 @@
 			);
 			name = Memory;
 			packageProductDependencies = (
-				57EDA6912BEA1840005AFB87 /* AtomicWrapper */,
 			);
 			productName = Memory;
 			productReference = 57F10CE52A98E33800C4F03D /* Memory.app */;
@@ -307,7 +304,6 @@
 			);
 			mainGroup = 57F10CDC2A98E33800C4F03D;
 			packageReferences = (
-				57EDA6902BEA1840005AFB87 /* XCRemoteSwiftPackageReference "AtomicWrapper" */,
 			);
 			productRefGroup = 57F10CE62A98E33800C4F03D /* Products */;
 			projectDirPath = "";
@@ -697,25 +693,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		57EDA6902BEA1840005AFB87 /* XCRemoteSwiftPackageReference "AtomicWrapper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/carlhung/AtomicWrapper.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		57EDA6912BEA1840005AFB87 /* AtomicWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 57EDA6902BEA1840005AFB87 /* XCRemoteSwiftPackageReference "AtomicWrapper" */;
-			productName = AtomicWrapper;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		57F10CF32A98E33A00C4F03D /* Memory.xcdatamodeld */ = {
