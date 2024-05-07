@@ -20,19 +20,23 @@ struct ThumbnailImageTagView<Content: View>: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            AsyncImageHack(url: photo.thumbnailURL) { phase in
-                if let image = phase.image {
-                    image // Displays the loaded image.
-                } else if let err = phase.error {
-                    Text("Error:\n\(err.localizedDescription)")
-                } else {
-                    Color.gray
-                }
-            }.frame(
+            AsyncImageHack(url: photo.thumbnailURL, content: createImageView)
+                .frame(
                 width: length,
                 height: length
             )
             content(photo)
+        }
+    }
+    
+    @ViewBuilder
+    private func createImageView(phase: AsyncImagePhase) -> some View {
+        if let image = phase.image {
+            image // Displays the loaded image.
+        } else if let err = phase.error {
+            Text("Error:\n\(err.localizedDescription)")
+        } else {
+            Color.gray
         }
     }
 }

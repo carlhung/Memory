@@ -10,10 +10,13 @@ import SwiftUI
 protocol QRCodeViewProtocol {
     var shown: Binding<Bool> { get set }
     var qrCodeImage: Image? { get }
+    @MainActor
     var width: Double { get }
 }
 
 extension QRCodeViewProtocol {
+    
+    @MainActor
     var width: Double { UIScreen.main.bounds.width / Double(2 - 30) }
 }
 
@@ -23,6 +26,8 @@ struct QRcodeView: QRCodeViewProtocol {
 }
 
 extension QRCodeViewProtocol where Self: View {
+    
+    @MainActor
     @ViewBuilder
     var body: some View {
         vstack {
@@ -35,6 +40,7 @@ extension QRCodeViewProtocol where Self: View {
         .clipped()
     }
     
+    @MainActor
     @ViewBuilder
     private var content: some View {
         Spacer()

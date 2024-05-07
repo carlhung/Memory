@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol SearchBarModel: Model {
+protocol SearchBarModel: Model, Sendable {
     func searchUser(name: String) async throws -> String?
     func searchTaggedPhotos(tags: String) async throws
 }

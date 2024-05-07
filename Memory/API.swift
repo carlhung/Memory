@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class API {
+final class API: Sendable {
 
     static let shared = API()
 

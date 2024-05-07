@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import AtomicWrapper
 
+@MainActor
 final class HomeViewModel: ObservableObject, Model {
     
     @Published
     var photoStream: PhotoStream?
     
-    @MainActor
     func getRecent() async throws {
         self.photoStream = try await api.getRecent()
     }
@@ -24,7 +25,6 @@ extension HomeViewModel: SearchBarModel {
         return searchUserResult.user?.nsid
     }
     
-    @MainActor
     func searchTaggedPhotos(tags: String) async throws {
         self.photoStream = try await api.search(tags: tags)
     }

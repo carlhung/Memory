@@ -25,54 +25,17 @@ struct HomeView: View {
                     ScrollView {
                         Section {
                             LazyVGrid(columns: defaultColumns, spacing: 10) {
-                                ForEach(
-                                    photos,
-                                    id: \.self
-                                ) { photo in
-                                    NavigationLink {
-                                        PhotoDetailView(photo: photo)
-                                    } label: {
-                                        ThumbnailImageTagView(photo: photo) { photo in
-                                            IconAndTitle(
-                                                url: photo.profileIconURL,
-                                                title: "NSID:\n\(photo.owner)",
-                                                spacing: 2,
-                                                iconLength: 25,
-                                                fontSize: 13
-                                            )
-                                            .padding(
-                                                EdgeInsets(
-                                                    top: 2,
-                                                    leading: 0,
-                                                    bottom: 3,
-                                                    trailing: 0
-                                                )
-                                            )
-                                            if !photo.tags.isEmpty {
-                                                Color(.black)
-                                                    .frame(height: 2)
-                                                Text("Tags:\n\(photo.tags)")
-                                                    .font(.system(size: 13))
-                                                    .defaultTextConfig()
-                                                    .padding(5)
-                                            }
-                                        }
-                                        .foregroundColor(.black)
-                                        .defaultRoundedRectangle()
-                                        .padding(.all, 5)
-                                    }
-                                    
-                                }
+                                ForEach(photos, id: \.self, content: createGrid)
                             }
                         } header: {
-                            SearchBar(text: $searchText, path: $path, model: model) {
+                            SearchBar(text: $searchText, path: $path, model: model, cleanButtonAction: {
                                 Task {
                                     try await model.getRecent()
                                 }
-                            }
-                            .navigationDestination(for: String.self) { nsid in
+                            })
+                            .navigationDestination(for: String.self, destination: { nsid in
                                 PhotoStreamView(model: UserPublicPhotoStreamModel(nsid: nsid))
-                            }
+                            })
                             Color.black.frame(height: 2)
                         }
                     }
@@ -92,6 +55,41 @@ struct HomeView: View {
                 }
             }
             .defaultNavigationBarConfig(barText: "Home View")
+        }
+    }
+    
+    private func createGrid(_ photo: PhotoStream.Photo) -> some View {
+        NavigationLink {
+            PhotoDetailView(photo: photo)
+        } label: {
+            ThumbnailImageTagView(photo: photo) { photo in
+                IconAndTitle(
+                    url: photo.profileIconURL,
+                    title: "NSID:\n\(photo.owner)",
+                    spacing: 2,
+                    iconLength: 25,
+                    fontSize: 13
+                )
+                .padding(
+                    EdgeInsets(
+                        top: 2,
+                        leading: 0,
+                        bottom: 3,
+                        trailing: 0
+                    )
+                )
+                if !photo.tags.isEmpty {
+                    Color(.black)
+                        .frame(height: 2)
+                    Text("Tags:\n\(photo.tags)")
+                        .font(.system(size: 13))
+                        .defaultTextConfig()
+                        .padding(5)
+                }
+            }
+            .foregroundColor(.black)
+            .defaultRoundedRectangle()
+            .padding(.all, 5)
         }
     }
 }

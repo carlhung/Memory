@@ -1,0 +1,15 @@
+{
+  "originHash" : "a19774719379d89d46d79b789a535b82ebfcc6187236c6d284309b50bbd8a1ef",
+  "pins" : [
+    {
+      "identity" : "atomicwrapper",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/carlhung/AtomicWrapper.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "bf0ce2e6c93a956a50b9f288956491fe47cc7f5a"
+      }
+    }
+  ],
+  "version" : 3
+}
