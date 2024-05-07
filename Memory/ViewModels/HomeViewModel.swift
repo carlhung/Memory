@@ -28,3 +28,32 @@ extension HomeViewModel: SearchBarModel {
         self.photoStream = try await api.search(tags: tags)
     }
 }
+
+/// another way
+/*
+ final class HomeViewModel: ObservableObject, Model, @unchecked Sendable {
+     
+     @MainActor
+     @Published
+     var photoStream: PhotoStream?
+     
+     func getRecent() async throws {
+         Task.detached { @MainActor in
+             self.photoStream = try await self.api.getRecent()
+         }
+     }
+ }
+
+ extension HomeViewModel: SearchBarModel {
+     func searchUser(name: String) async throws -> String? {
+         let searchUserResult = try await api.findBy(username: name)
+         return searchUserResult.user?.nsid
+     }
+     
+     func searchTaggedPhotos(tags: String) async throws {
+         Task.detached { @MainActor in
+             self.photoStream = try await self.api.search(tags: tags)
+         }
+     }
+ }
+ */
